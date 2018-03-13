@@ -21,7 +21,7 @@ var gulp = require('gulp'),
     babel = require('gulp-babel'), //编译es6
     rev = require('gulp-rev'),  //对文件名加md5后缀
     revCollector = require('gulp-rev-collector'); //路径html替换
-var project = 'novel';
+var project = 'css3-demo';
 var path = {
     css: {
         src: './' + project + '/src/less/**/*.less',
@@ -66,6 +66,26 @@ gulp.task('css', function() {
         .pipe(gulp.dest(path.css.dist))
 });
 
+
+// pc
+gulp.task('pcss', function() {
+    var processors = [
+        autoprefixer({
+            browsers: ['last 2 versions', 'Android >= 4.0', 'last 2 Explorer versions', 'last 3 Safari versions', 'Firefox >= 20', '> 5%'],
+            cascade: true, //是否美化属性值 默认：true 像这样：//-webkit-transform: rotate(45deg);transform: rotate(45deg);
+            remove: true //是否去掉不必要的前缀 默认：true 
+        })
+    ];
+    gulp.src(path.css.src)
+        .pipe(less())
+        .pipe(postcss(processors))
+        .pipe(minifycss())
+        .pipe(rename({
+            basename: project,
+            suffix: '.min'
+        }))
+        .pipe(gulp.dest(path.css.dist))
+})
 //加md5
 gulp.task('cssmd5', function() {
     var processors = [
@@ -156,9 +176,15 @@ gulp.task('sign', function(cb){
 gulp.task('signmd', function(cb){
     runSequence('del', 'copy', 'es6', 'css', 'img', 'rev', cb);
 })
-
+gulp.task('signpc', function(cb) {
+    runSequence('del', 'copy', 'es6', 'pcss', 'img', 'rev', cb);
+})
 gulp.task('watch', function() {
     gulp.watch(path.css.src, ['sign'])
+})
+
+gulp.task('pcwatch', function() {
+    gulp.watch(path.css.src, ['signpc'])
 })
 
 gulp.task('watchmd', function() {
