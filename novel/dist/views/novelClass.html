@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>分类</title>
+    <script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>
+    <link rel="stylesheet" href="../../iconfont/iconfont.css">
+    <link rel="stylesheet" href="../../dist/css/novel.min.css">
+</head>
+<body>
+    <!-- 公共头部 -->
+    <div class="common-top">
+        <a href="#" class="nav-list">
+            <i class="iconfont icon-home"></i>
+            <span class="tit">首页</span>
+        </a>
+        <a href="#" class="nav-list">
+            <i class="iconfont icon-fenlei"></i>
+            <span class="tit">分类</span>
+        </a>
+        <a href="#" class="nav-list">
+            <i class="iconfont icon-shijian"></i>
+            <span class="tit">最近阅读</span>
+        </a>
+        <a href="#" class="nav-list">
+            <i class="iconfont icon-gerenzhongxin"></i>
+            <span class="tit">个人中心</span>
+        </a>
+        <a href="#" class="nav-list">
+            <i class="iconfont icon-qiandao"></i>
+            <span class="tit">签到</span>
+        </a>
+    </div>
+    <!-- 分类页 -->
+
+    <!-- 搜索按钮 -->
+    <a href="https://m.tdamm.com/novel/search/index" class="search-bar clr">
+        <div class="search-icon">
+            <i class="iconfont icon-iconsmallsearch"></i>
+        </div>
+        <span class="t">搜索</span>   
+    </a>
+
+    <!-- 温馨提示 -->
+    <div class="prompt hide">
+        <img src="../img/prompt-pic1.png" class="prompt-pic1" alt="">
+        <img src="../img/prompt-pic2.png" class="prompt-pic2" alt="">
+    </div>
+
+    <!--  -->
+    <div class="messub-dialog">
+        <div class="panel">
+            <span class="txt">亲，感谢你的留言，在下面留下你的联系方式，肖医生回复后你会在第一时间收到短信通知哦！</span>
+            <form action="" method="post" class="my-form" id="myForm">
+                <label>称呼：</label>
+                <input type="text" name="username" class="input-txt" id="username" placeholder="如：张先生" >
+                <label>联系方式：</label>
+                <input type="text" name="phone" class="input-txt" id="phone" placeholder="手机号" >
+                <div class="btns">
+                    <span class="submit" id="subBtn">确认</span>
+                    <span class="cancel" id="cancel-btn">取消</span>
+                </div>   
+            </form> 
+        </div>
+    </div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-validate/1.17.0/jquery.validate.min.js"></script>
+<script>
+    $(function() {
+
+        $('#cancel-btn').on('touchend', function() {
+            $('.messub-dialog').addClass('hide')
+        })
+
+        $('#subBtn').on('touchend', function() {
+            $('#myForm').submit()
+        })
+
+        
+       
+        $.validator.addMethod("isPhone", function(value, element){
+            return new RegExp(/^1[3458]\d{9}$/).test(value);
+        }, $.validator.format("手机号码不正确"));
+        $('#myForm').validate({
+            rules: {
+                username: {
+                    required: true,
+                    minlength: 2
+                },
+                phone: {
+                    required: true,
+                    isPhone: true
+                }
+                
+            },
+            messages: {
+                username: {
+                    required: '请输入用户名',
+                    minlength: $.validator.format("用户名长度大于等于2个字符")
+                },
+                phone: {
+                    required: '请输入您的手机号',
+                    isPhone: '请输入正确的手机号'
+                }
+            },
+            submitHandler: function(form) {
+                $.ajax({
+                    url: $('#myForm').attr('action'),
+                    type: 'post',
+                    data: '',
+                    datatype: 'json',
+                    success: function(data) {
+
+                    }
+                })
+            }
+            
+        })
+        
+
+       
+    })
+</script>
+</html>
