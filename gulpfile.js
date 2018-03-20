@@ -21,7 +21,7 @@ var gulp = require('gulp'),
     babel = require('gulp-babel'), //编译es6
     rev = require('gulp-rev'),  //对文件名加md5后缀
     revCollector = require('gulp-rev-collector'); //路径html替换
-var project = 'css3-demo';
+var project = 'test';
 var path = {
     css: {
         src: './' + project + '/src/less/**/*.less',

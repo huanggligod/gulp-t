@@ -1,0 +1,172 @@
+@charset "utf-8";
+
+html {
+    font-size: 75px;
+}
+html, body, div, span, applet, object, iframe, h1, h2, h3, 
+h4, h5, h6, p, blockquote, pre, a, abbr, acronym, 
+address, big, cite, code, del, dfn, em, font, img, ins, 
+kbd, q, s, samp, small, strike, strong, sub, sup, tt, 
+var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, 
+table, caption, tbody, tfoot, thead, tr, th, td,i {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-size: 12px;
+    font-family: "Microsoft YaHei","微软雅黑",tahoma,Arial,Helvetica,sans-serif;
+}
+ul, li {
+    list-style: none;
+}
+i, em {
+    font-style: normal;
+}
+a {
+    text-decoration: none;
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+.font-norem(@font-size) {
+    font-size: @font-size;
+
+    [data-dpr="2"] & {
+        font-size: @font-size * 2;
+    }
+    [data-dpr="3"] & {
+        font-size: @font-size * 3;
+    }
+}
+.clr:after {
+    display: block;
+    content: '';
+    clear: both;
+}
+
+.hide {
+    display: none;  
+}
+
+body {
+    background:#f4f4f4;
+}
+
+.homepage {
+    .swiper-container {
+        .swiper-slide {
+            img {
+                display: block;
+                width: 100%;
+            }
+        }
+    }
+}
+
+.common-top {
+    height: 75px;
+    padding: 0 40px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #eeeeee;
+
+    .icon{
+        display: block;
+        width: 17px;
+        height: 75px;
+        background-image: url('../img/common-top-icon.png');
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: 17px 54px;
+        float: left;
+    }
+
+    .tit {
+        display: block;
+        .font-norem(14px);
+        float: left;
+        line-height: 75px;
+        margin-left: 25px;
+    }
+
+    .desc {
+        display: block;
+        .font-norem(14px);
+        float: right;
+        line-height: 75px;
+        
+    }
+}
+
+.homepage-archives {
+    background: #fff;
+    .archives-ct {
+        .left-box {
+            width: 50%;
+            float: left;
+            padding: 44px 42px 64px;
+            border-right: 1px solid #eeeeee;
+            box-sizing: border-box;
+        }
+        .time {
+            float: left;
+            .solar {
+                .day {
+                    display: block;
+                    .font-norem(24px);
+                    
+                }
+
+                .month {
+                    color: #86878a;
+                }
+            }
+
+            .lunar {
+                padding-left: 0.1rem;
+                margin-top: 22px;
+
+                span {
+                    color: #000000;
+                    display: inline-block;
+                    width: 26px;
+                    vertical-align: top;
+                }
+                .year {
+                    margin-right: 0.1rem;
+                }
+                
+            }
+        }
+
+        .mes-box {
+            float: left;
+            margin-left: 78px;
+            padding-top: 15px;
+            .icon {
+                display: inline-block;
+                width: 40px;
+                .font-norem(14px);
+                border-radius: 50%;
+                text-align: center;
+               line-height: 1.5;
+
+
+                &.icon1 {
+                    background: #f65248;
+                    color: #fff;
+                }
+
+                &.icon2 {
+                    color: #86878a;
+                    border: 1px solid #86878a;
+                    margin-left: 20px;
+                }
+            }
+
+            .tit {
+                
+            }
+        }
+    }
+}

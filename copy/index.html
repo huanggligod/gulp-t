@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>  
+    <span class="txt">xxxx</span>
+    <button id="copyBtn">点击复制</button>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="clipboard.min.js"></script>
+<script>
+    var txt = $('.txt').text();
+    $('#copyBtn').val(txt);
+    
+    var clipboard = new Clipboard('#copyBtn', { 
+        text: function(trigger) {
+           return $('#copyBtn').val()
+        }
+    })
+    clipboard.on('success', function(e) {
+        $('#copyBtn').html('已复制成功')
+    })
+    clipboard.on('error', function() {
+        $('#copyBtn').html('复制失败，请手动复制')
+    })
+</script>
+</html>

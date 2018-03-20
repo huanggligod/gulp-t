@@ -5,7 +5,7 @@
     <meta content="yes" name="apple-touch-fullscreen"> 
     <meta content="telephone=no,email=no" name="format-detection">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>淘客个人中心</title>
+    <title>个人中心</title>
     <script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>
     <link rel="stylesheet" href="../../iconfont/iconfont.css">
     <link rel="stylesheet" href="../../dist/css/agent-personal.min.css">
@@ -34,12 +34,20 @@
             </div>
         </div>
     </div>
-
+    
     <div class="links mb22">
         <a href="#" class="link clr">
             <span class="iconfont icon-daili1"></span>
             <span class="tit red">12.9元做纸巾代理</span>
             <span class="icon"></span>
+        </a>
+        <a href="#" class="link clr">
+            <span class="icon-ticket"></span>
+            <span class="tit">抵扣券</span>
+            <span class="icon"></span>
+            <span class="txt">下次购买抵扣0.65元</span> 
+            <!-- 没有抵扣券 -->
+            <!-- <span class="txt">暂无</span> -->
         </a>
         <a href="#" class="link clr">
             <span class="iconfont icon-31haoyou"></span>
@@ -74,5 +82,62 @@
             <span class="icon"></span>
         </a>
     </div>
+
+    <!-- 返现弹窗弹窗 -->
+    <div class="ticket-dialog">
+        <div class="panel">
+            <span class="tit">恭喜您获得一笔返现金额</span>
+            <div class="txt">
+                <span class="num">￥<i>0.65</i></span>
+                <span class="des">返现金额用于下次支付时现金抵扣，不能用于提现。</span>
+            </div>
+            <span class="close-btn" id="closeBtn"></span>
+            <div class="btns">
+               <a href="javascript:void(0);" class="btn link2">立即领取</a>
+               <!-- <a href="#" class="btn link2">立即使用</a> -->
+            </div>
+        </div>
+        <!-- 领取成功 -->
+        <div class="success-dialog"></div>
+    </div>  
+
+    <!-- 这是支付页面的  暂时放在这-->
+    <!-- 支付页面抵扣 -->
+    <div class="row">
+        <span class="fl">抵扣0.65元</span>
+        <span class="fr">-0.65</span>
+    </div>
 </body>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    var closeBtn = $('#closeBtn'),
+        ticDialog = $('.ticket-dialog'),
+        recevieBtn = $('.link2');
+
+    // 关闭弹窗
+    closeBtn.on('touchend', function() {
+        ticDialog.addClass('hide')
+    })
+
+
+    function shade(node) {
+        setTimeout(function() {
+            node.fadeOut(500)
+        },1500)
+    }
+    recevieBtn.on('touchend', function() {
+        
+        $.ajax({
+            url: '',
+            type: 'post',
+            data:'',
+            datatype: 'json',
+            success: function() {
+                $('.success-dialog').fadeIn(500)
+                $(this).text('领取成功').addClass('on')
+                shade($('.success-dialog'))
+            }
+        })
+    })
+</script>
 </html>

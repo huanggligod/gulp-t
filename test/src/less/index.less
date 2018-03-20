@@ -1,7 +1,116 @@
-body {
-    width: 100%;
 
-    div {
-        width: 100%;
+@keyframes aniTwo {
+    0% {
+        transform: scale(.1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
     }
 }
+
+.income-tip {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    .icon {
+        display: block;
+        width: 0.41rem;
+        height: 0.44rem;
+        background: url('../img/money-icon.png') no-repeat;
+        background-size: 0.41rem 0.44rem;
+        margin-right: 0.2rem;
+    }
+
+    .load {
+        width: 0.65rem;
+        height: 0.65rem;
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        position: absolute;
+        left: -0.10rem;
+        top: -0.10rem;
+        z-index: 99;
+        
+
+        .load-x {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 0.65rem;
+            height: 0.65rem;
+            border-radius: 100%;
+            background: radial-gradient(rgba(255,162,151,1) 100%,transparent 10%);
+            animation: aniTwo 4s ease 0.3s infinite;
+        }
+
+        .load-y {
+            position: absolute;
+            top: 0.01rem;
+            left: 0.01rem;
+            width: 0.60rem;
+            height: 0.60rem;
+            border-radius: 100%;
+            background: radial-gradient(rgba(255,162,151,.8) 100%,transparent 10%);
+            animation: aniTwo 2s ease .2s infinite;       
+        }
+        // .load-z {
+        //     position: absolute;
+        //     top: 0.025rem;
+        //     left: 0.025rem;
+        //     width: 0.55rem;
+        //     height: 0.55rem;
+        //     border-radius: 100%;
+        //     background: radial-gradient(rgba(255,162,151,.7) 100%,transparent 10%);
+        //     animation: aniTwo 2s ease .3s infinite;       
+        // }
+        // .load-m {
+        //     position: absolute;
+        //     top: 0;
+        //     left: 0;
+        //     width: 0.65rem;
+        //     height: 0.65rem;
+        //     border-radius: 100%;
+        //     background: radial-gradient(rgba(255,162,151,.6) 100%,transparent 10%);
+        //     animation: aniTwo 2s ease .4s infinite;
+        // }
+    }
+
+    .tit {
+        font-size: 0.24rem;
+        color: #7c7474;
+    }
+}
+
+.my-income {
+    position: absolute;
+    margin-top: 200px;
+    width: 1.9rem;
+    background: #ffe1de;
+    height: 0.6rem;
+    display: flex;
+    align-items: center;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+
+    .icon {
+        display: block;
+        width: 0.41rem;
+        height: 0.44rem;
+        background: url('../img/money-icon.png') no-repeat;
+        background-size: 0.41rem 0.44rem; 
+        margin: 0 0.15rem;  
+    }
+
+    .tit { 
+        font-size: 0.24rem;
+        color: #8c8181;
+        display: flex;
+        align-items: center;
+
+    }
+}
+
